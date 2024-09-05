@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+
+}
+h1{
+    margin: 30px;
+    color: white;
+    text-align: center;
+}
+section{
+    text-align: center;
+}
+.container{
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+.box button{
+    display: flex;
+    background-color: black;
+    width: 200px;
+    height: 50px;
+    margin: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.box #livros-data,
+.box #autores-data,
+.box #estudantes-data,
+.box #emprestimos-data {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  overflow-x: auto;
+  margin: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+#Carregar{
+    color: black;
+}
