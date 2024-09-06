@@ -1,67 +1,72 @@
-const formCSV = document.getElementById('formCSV');
-const livrosData = document.getElementById('livros-data');
-const autoresData = document.getElementById('autores-data');
-const estudantesData = document.getElementById('estudantes-data');
-const emprestimosData = document.getElementById('emprestimos-data');
 
-formCSV.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const file = arquivoCSV.files[0];
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    const csvData = reader.result;
-    const csvArray = csvData.split('\n').map((row) => row.split(','));
-    const headers = csvArray.shift();
-
-    console.log('Dados do arquivo CSV:');
-    console.log(csvArray);
-
-    const table = document.createElement('table');
-    const thead = document.createElement('thead');
-    const tbody = document.createElement('tbody');
-
-    headers.forEach((header) => {
-      const th = document.createElement('th');
-      th.textContent = header;
-      thead.appendChild(th);
-    });
-
-    csvArray.forEach((row) => {
-      const tr = document.createElement('tr');
-      row.forEach((cell) => {
-        const td = document.createElement('td');
-        td.textContent = cell;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-
-    table.appendChild(thead);
-    table.appendChild(tbody);
-
-    
-    switch (file.name) {
-      case 'livros-1.csv':
-        livrosData.innerHTML = '';
-        livrosData.appendChild(table);
-        break;
-      case 'autores.csv':
-        autoresData.innerHTML = '';
-        autoresData.appendChild(table);
-        break;
-      case 'estudantes.csv':
-        estudantesData.innerHTML = '';
-        estudantesData.appendChild(table);
-        break;
-      case 'emprestimo.csv':
-        emprestimosData.innerHTML = '';
-        emprestimosData.appendChild(table);
-        break;
-      default:
-        alert("Arquivo não e reconhecido");
+class ArquivoCSV {
+    constructor(nome, dados) {
+      this.nome = nome;
+      this.dados = dados;
     }
-  };
-
-  reader.readAsText(file);
-});
+  
+    lerDados() {
+      const csvArray = this.dados.split('\n').map((row) => row.split(','));
+      const headers = csvArray.shift();
+  
+      console.log(`Dados do arquivo ${this.nome}:`);
+      console.log(csvArray);
+  
+      return csvArray;
+    }
+  }
+  
+  class LeitorCSV {
+    constructor(arquivoCSV) {
+      this.arquivoCSV = arquivoCSV;
+    }
+  
+    lerArquivo() {
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        const csvData = reader.result;
+        const arquivo = new ArquivoCSV(this.arquivoCSV.name, csvData);
+        const dados = arquivo.lerDados();
+  
+        // Adiciona os dados ao elemento correspondente
+        switch (this.arquivoCSV.name) {
+          case 'livros-1.csv':
+            document.getElementById('livros-data').innerHTML = '';
+            dados.forEach((row) => {
+              document.getElementById('livros-data').innerHTML += `${row.join(', ')}<br>`;
+            });
+            break;
+          case 'autores.csv':
+            document.getElementById('autores-data').innerHTML = '';
+            dados.forEach((row) => {
+              document.getElementById('autores-data').innerHTML += `${row.join(', ')}<br>`;
+            });
+            break;
+          case 'estudantes.csv':
+            document.getElementById('estudantes-data').innerHTML = '';
+            dados.forEach((row) => {
+              document.getElementById('estudantes-data').innerHTML += `${row.join(', ')}<br>`;
+            });
+            break;
+          case 'emprestimo.csv':
+            document.getElementById('emprestimos-data').innerHTML = '';
+            dados.forEach((row) => {
+              document.getElementById('emprestimos-data').innerHTML += `${row.join(', ')}<br>`;
+            });
+            break;
+          default:
+            console.log('Arquivo não reconhecido');
+        }
+      };
+  
+      reader.readAsText(this.arquivoCSV);
+    }
+  }
+  
+  document.getElementById('formCSV').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const arquivoCSV = document.getElementById('arquivoCSV').files[0];
+    const leitorCSV = new LeitorCSV(arquivoCSV);
+    leitorCSV.lerArquivo();
+  });
