@@ -16,12 +16,12 @@ body {
 
 }
 h1{
-    margin: 30px;
+    padding: 30px;
     color: white;
     text-align: center;
 }
 .escolha {
-  background-color: black; /* cor de fundo laranja */
+  background-color: orange; /* cor de fundo laranja */
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -58,6 +58,7 @@ section{
     text-align: center;
 }
 .container{
+   height: 100%;
     display: flex;
     margin: 20px;
     justify-content: center;
@@ -87,6 +88,7 @@ section{
   background-color: #fff;
   overflow-x: auto;
   margin: 20px;
+  margin-bottom: 100px;
 }
 
 table {
@@ -105,6 +107,7 @@ th {
 }
 #Carregar{
     color: black;
+    background-color: orange;
 }
 
 .rodape {
@@ -115,6 +118,7 @@ th {
   padding: 20px;
   text-align: center;
   color: #FFFFFF; /* cor do texto branco */
+  margin-top: 50px;
 }
 a{
   margin: 30px;
