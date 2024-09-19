@@ -20,6 +20,40 @@ h1{
     color: white;
     text-align: center;
 }
+.escolha {
+  background-color: black; /* cor de fundo laranja */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.escolha form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#arquivoCSV {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #fff; /* cor da borda laranja */
+  border-radius: 5px;
+  color: #fff;
+}
+
+button[type="submit"] {
+  background-color: green; /* cor de fundo laranja */
+  color: #FFFFFF; /* cor do texto branco */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: rgb(114, 190, 0); /* cor de fundo laranja claro */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
 section{
     text-align: center;
 }
@@ -47,8 +81,7 @@ section{
 .box #autores-data,
 .box #estudantes-data,
 .box #emprestimos-data {
-  margin-top: 20px;
-  padding: 20px;
+  padding: auto;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
@@ -72,4 +105,46 @@ th {
 }
 #Carregar{
     color: black;
+}
+
+.rodape {
+  width: 100%;
+  position: fixed; /* fixa o footer no final do site */
+  bottom: 0;
+  background-color: orange; /* cor de fundo laranja */
+  padding: 20px;
+  text-align: center;
+  color: #FFFFFF; /* cor do texto branco */
+}
+a{
+  margin: 30px;
+}
+.rodape .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rodape p {
+  margin-bottom: 10px;
+}
+
+.rodape .links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.rodape .links li {
+  margin-right: 20px;
+}
+
+.rodape .links a {
+  color: #FFFFFF; /* cor do texto branco */
+  text-decoration: none;
+}
+
+.rodape .links a:hover {
+  color: #000; /* cor de texto laranja claro */
 }
